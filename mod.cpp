@@ -1,0 +1,12 @@
+name = "Driver Dismount Sensor";
+picture = "logo_ampersand_ca.paa";
+actionName = "GitHub";
+action = "https://github.com/ampersand38/ride-where-you-look";
+description = "Display nearby dismounts to AFV drivers.";
+logo = "logo_ampersand_ca.paa";
+logoOver = "logo_ampersand_ca.paa";
+tooltip = "Driver Dismount Sensor";
+tooltipOwned = "Driver Dismount Sensor";
+overview = "Display nearby dismounts to AFV drivers.";
+author = "Ampersand";
+overviewPicture = "logo_ampersand_ca.paa";
