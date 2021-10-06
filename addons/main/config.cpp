@@ -1,15 +1,16 @@
 #include "script_component.hpp"
 
 class CfgPatches {
-    class DriverDismountSensor {
-        name = "Driver Dismount Sensor";
+    class ADDON {
+        name = COMPONENT_NAME;
         units[] = {};
         weapons[] = {};
-        requiredVersion = 2.0;
+        requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"A3_Data_F_AoW_Loadorder", "A3_Data_F_Mod_Loadorder"};
         author = "Ampersand";
         authors[] = {"Ampersand"};
         authorUrl = "https://github.com/ampersand38/driver-dismount-sensor";
+        VERSION_CONFIG;
     };
 };
 
