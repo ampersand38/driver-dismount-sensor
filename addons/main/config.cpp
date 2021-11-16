@@ -44,9 +44,9 @@ class VehicleSystemsTemplateRightDriver: DefaultVehicleSystemsDisplayManagerRigh
 	};
 };
 
-#define SENSORMAN class SensorsManagerComponent { \
+#define SENSORMAN class SensorsManagerComponent: SensorsManagerComponent { \
    class Components { \
-       class SensorMan : SensorTemplateMan { \
+       class SensorMan: SensorTemplateMan { \
            class AirTarget \
            { \
                minRange = 0; \
@@ -67,33 +67,49 @@ class VehicleSystemsTemplateRightDriver: DefaultVehicleSystemsDisplayManagerRigh
    }; \
 };
 
-#define ADDSENSOR class Components { \
+#define ADDSENSOR class Components: Components { \
     SENSORMAN \
 };
 
-#define ADDPANELSENSOR class Components { \
+#define ADDPANELSENSOR class Components: Components { \
     class VehicleSystemsDisplayManagerComponentLeft: VehicleSystemsTemplateLeftDriver {}; \
     class VehicleSystemsDisplayManagerComponentRight: VehicleSystemsTemplateRightDriver {}; \
     SENSORMAN \
 };
 
+#define INHERITCOMPONENTS class Components: Components { \
+    class SensorsManagerComponent; \
+};
+
 class CfgVehicles {
-    class Tank;
-    class Tank_F : Tank {
+    class Land;
+    class LandVehicle: Land {
+        class Components;
+    };
+
+    class Tank: LandVehicle {
+        INHERITCOMPONENTS
+    };
+    class Tank_F: Tank {
         ADDSENSOR
     };
-    class MBT_04_base_F;
-    class MBT_04_command_base_F : MBT_04_base_F {
+    class MBT_04_base_F: Tank_F {
+        INHERITCOMPONENTS
+    };
+    class MBT_04_command_base_F: MBT_04_base_F {
         ADDPANELSENSOR
     };
-    class Car;
-    class Car_F : Car {
+
+    class Car: LandVehicle {
+        INHERITCOMPONENTS
+    };
+    class Car_F: Car {
         ADDSENSOR
     };
-    class Wheeled_APC_F : Car_F {
+    class Wheeled_APC_F: Car_F {
         ADDSENSOR
     };
-    class AFV_Wheeled_01_base_F : Wheeled_APC_F {
+    class AFV_Wheeled_01_base_F: Wheeled_APC_F {
         ADDPANELSENSOR
     };
 };
